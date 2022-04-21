@@ -44,7 +44,7 @@ let allEarthquakes = new L.LayerGroup();
 
 // 2. Add a reference to the major earthquake group to the overlays object.
 let overlays = {
-  "Major Eearthquake": majorEQ,
+  "Major Earthquake": majorEQ,
   "Tectonic Plates": tectonicPlates,
   "Earthquakes": allEarthquakes
 };
@@ -172,17 +172,18 @@ L.geoJson(data, {
       return L.circleMarker(latlng);
    },
 style: styleInfo,
-  onEachFeature: function(feature, layer) {
+
+onEachFeature: function(feature, layer) {
     layer.bindPopup("Magnitude: " + feature.properties.mag + "<br>Location: " + feature.properties.place);
-}
-}).addTo(allEarthquakes);
+  }
+}).addTo(majorEarthquakes);
 
 // 8. Add the major earthquakes layer to the map.
 
 majorEarthquakes.addTo(map);
 
 // 9. Close the braces and parentheses for the major earthquake data.
-  });
+});
 
 // Here we create a legend control object.
 let legend = L.control({
